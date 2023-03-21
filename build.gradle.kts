@@ -1,10 +1,10 @@
 plugins {
     kotlin("multiplatform") version "1.8.0"
-    id("maven-publish")
+    id("convention.publication")
 }
 
 group = "io.github.niqrs"
-version = "1.0-SNAPSHOT"
+version = "0.1"
 
 repositories {
     mavenCentral()
