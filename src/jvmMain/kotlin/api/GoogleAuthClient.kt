@@ -1,7 +1,7 @@
 package api
 
-import GoogleAuthServer
-import googleAuthHttpClient
+import auth.GoogleAuthServer
+import auth.googleAuthHttpClient
 import io.ktor.client.call.*
 import io.ktor.client.plugins.auth.providers.*
 import io.ktor.client.request.forms.*
@@ -20,9 +20,7 @@ class GoogleAuthClient(
     private val bearerTokenStorage = mutableListOf<BearerTokens>()
     private val client = googleAuthHttpClient(bearerTokenStorage, googleClientId)
 
-    init {
-        println("$GoogleOAuthAuthUrl?$authorizationUrlQuery")
-    }
+    val authorizationUrl: String = "$GoogleOAuthAuthUrl?$authorizationUrlQuery"
 
     suspend fun waitForOAuthIdToken(): String {
         val server = GoogleAuthServer(port)

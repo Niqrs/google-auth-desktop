@@ -1,4 +1,4 @@
 package utils
 
-const val GoogleOAuthAuthUrl = "https://accounts.google.com/o/oauth2/auth"
-const val GoogleOAuthTokenUrl = "https://accounts.google.com/o/oauth2/token"
+internal const val GoogleOAuthAuthUrl = "https://accounts.google.com/o/oauth2/auth"
+internal const val GoogleOAuthTokenUrl = "https://accounts.google.com/o/oauth2/token"
