@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "io.github.niqrs"
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()

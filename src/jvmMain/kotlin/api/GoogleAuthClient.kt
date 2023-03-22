@@ -7,11 +7,6 @@ import io.ktor.client.plugins.auth.providers.*
 import io.ktor.client.request.forms.*
 import models.TokenInfo
 import utils.*
-import utils.GoogleOAuthAuthUrl
-import utils.GoogleOAuthTokenUrl
-import utils.buildAuthorizationUrlQuery
-import utils.buildTokenValidationUrl
-import java.io.File
 
 class GoogleAuthClient(
     private val googleClientId: String,
@@ -25,9 +20,9 @@ class GoogleAuthClient(
     val authorizationUrl: String = "$GoogleOAuthAuthUrl?$authorizationUrlQuery"
 
     suspend fun waitForOAuthIdToken(
-        successPagePath: String = getResource("/success.html") ?: ""
+        successPage: String = getResource("/success.html")?.readText() ?: ""
     ): String {
-        val server = GoogleAuthServer(port, File(successPagePath))
+        val server = GoogleAuthServer(port, successPage)
         val code = server.startServerForCode()
         val tokenInfo: TokenInfo = client.submitForm(
             url = GoogleOAuthTokenUrl,
